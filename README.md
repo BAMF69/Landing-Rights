@@ -25,7 +25,7 @@ Status: **0.1.0, first playable build.** Played on Windows with both games runni
 | New Greenland | 25,000 | nearest Ice planet |
 | Gemstone | 40,000 | nearest Volcanic planet |
 
-The deed is offered at that planet's spaceport when you land. While you're landed on a claim, press **F** on the Endless Sky planet screen to go back down to Dyson Sphere Program. DSP mutes itself while it's in the background (set `muteInBackground=false` in `Dyson Sphere Program/LandingRights/LandingRights.cfg` to turn that off). Items ship in whole tons from spaceport depots only. Partial tons stay in the depot.
+The deed is offered at that planet's spaceport when you land. While you're landed on a claim, press **F** on the Endless Sky planet screen to go back down to Dyson Sphere Program. DSP mutes itself while it's in the background (set `muteInBackground=false` in `Dyson Sphere Program/LandingRights/LandingRights.cfg` to turn that off). Items ship in whole tons from spaceport depots only, and never more than your landed fleet has room for: when space is short, the goods that sell for most on that planet go first. Partial tons and anything that doesn't fit stay in the depot.
 
 | ES commodity | DSP items (items per ton) |
 |---|---|

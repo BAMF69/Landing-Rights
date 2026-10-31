@@ -1,10 +1,61 @@
 {
   "sheet": "bridge",
   "about": "Files the two games exchange. All live in <Endless Sky config folder>/landing-rights/ (Windows: %APPDATA%\\endless-sky\\landing-rights). Each file is written to <name>.tmp then renamed, so the reader never sees half a file. Format is one key=value per line (no JSON library needed on either side).",
-  "columns": ["id", "fileName", "writer", "reader", "keys"],
+  "columns": [
+    "id",
+    "fileName",
+    "writer",
+    "reader",
+    "keys"
+  ],
   "rows": [
-    {"id": "state",     "fileName": "state.txt",          "writer": "endless-sky",          "reader": "dyson-sphere-program", "keys": ["seq", "event", "planet", "system", "claimed", "world"]},
-    {"id": "heartbeat", "fileName": "dsp.txt",            "writer": "dyson-sphere-program", "reader": "endless-sky",          "keys": ["time", "inGame", "planet"]},
-    {"id": "shipment",  "fileName": "shipment-<seq>.txt", "writer": "dyson-sphere-program", "reader": "endless-sky",          "keys": ["seq", "claim", "return", "cargo.<commodity>"]}
+    {
+      "id": "state",
+      "fileName": "state.txt",
+      "writer": "endless-sky",
+      "reader": "dyson-sphere-program",
+      "keys": [
+        "seq",
+        "event",
+        "planet",
+        "system",
+        "claimed",
+        "world"
+      ]
+    },
+    {
+      "id": "heartbeat",
+      "fileName": "dsp.txt",
+      "writer": "dyson-sphere-program",
+      "reader": "endless-sky",
+      "keys": [
+        "time",
+        "inGame",
+        "planet"
+      ]
+    },
+    {
+      "id": "shipment",
+      "fileName": "shipment-<seq>.txt",
+      "writer": "dyson-sphere-program",
+      "reader": "endless-sky",
+      "keys": [
+        "seq",
+        "claim",
+        "return",
+        "cargo.<commodity>"
+      ]
+    },
+    {
+      "id": "fleet",
+      "fileName": "fleet.txt",
+      "writer": "endless-sky",
+      "reader": "dyson-sphere-program",
+      "keys": [
+        "planet",
+        "cargoFree",
+        "price.<commodity>"
+      ]
+    }
   ]
 }

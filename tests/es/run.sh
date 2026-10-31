@@ -32,6 +32,10 @@ S="$W/run/cfg/landing-rights/state.txt"
 grep -q '^claimed=1$' "$S" && echo "PASS claim condition reached the bridge" || { echo "FAIL state.txt"; cat "$S"; fail=1; }
 grep -q '^world=ocean$' "$S" && echo "PASS world type sent" || { echo "FAIL world"; fail=1; }
 [[ ! -e "$W/run/cfg/landing-rights/shipment-1.txt" ]] && echo "PASS shipment consumed" || { echo "FAIL shipment not consumed"; fail=1; }
+F="$W/run/cfg/landing-rights/fleet.txt"
+grep -q '^planet=New Boston$' "$F" && grep -q '^cargoFree=45$' "$F" && grep -qE '^price\.Metal=[0-9]+$' "$F" \
+	&& echo "PASS fleet report: $(grep -E '^(cargoFree|price.Metal|price.Luxury Goods)=' "$F" | tr '\n' ' ')" \
+	|| { echo "FAIL fleet report"; cat "$F"; fail=1; }
 SAVE="$W/run/cfg/saves/Landing Rights New Boston Save.txt"
 python3 - "$SAVE" <<'EOF' || fail=1
 import re, sys

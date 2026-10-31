@@ -395,7 +395,7 @@ namespace LandingRights
 			var tons = new Dictionary<string, int>();
 			var detail = new List<string>();
 			var found = new Dictionary<int, int>();   // item id -> count seen in depots
-			int depots = 0;
+			int depots = 0, capacity = -1, leftBehindTons = 0;
 			var factory = planet != null ? planet.factory : null;
 			if (factory != null && factory.factoryStorage != null && factory.factoryStorage.storagePool != null)
 			{
@@ -411,12 +411,25 @@ namespace LandingRights
 						int seen; found.TryGetValue(s.ItemId, out seen); found[s.ItemId] = seen + have;
 					}
 				}
+				// What the landed fleet can still hold, and what each good sells for there (written by Endless Sky).
+				var fleet = ReadKV(Path.Combine(bridgeDir, "fleet.txt"));
+				string freeText;
+				if (Get(fleet, "planet") == claim.Planet && fleet.TryGetValue("cargoFree", out freeText) && int.TryParse(freeText, out capacity)) { }
+				else capacity = -1; // unknown: no cap
+				Func<Tables.Shipment, int> price = r => { int v; return int.TryParse(Get(fleet, "price." + r.Commodity), out v) ? v : 0; };
+				// Fill the hold with the best-paying goods first; ties keep the sheet's order.
+				var order = Tables.Shipments.Select((r, i) => new { r, i }).OrderByDescending(x => price(x.r)).ThenBy(x => x.i).Select(x => x.r).ToList();
+				int room = capacity;
 				// Ship whole tons per item type across all depots, so items spread over several depots add up.
-				foreach (var s in Tables.Shipments)
+				foreach (var s in order)
 				{
 					int total; found.TryGetValue(s.ItemId, out total);
-					int want = (total / s.ItemsPerTon) * s.ItemsPerTon;
-					if (want <= 0) continue;
+					int fullTons = total / s.ItemsPerTon;
+					if (fullTons <= 0) continue;
+					int shipTons = room < 0 ? fullTons : Math.Min(fullTons, room);
+					if (shipTons < fullTons) leftBehindTons += fullTons - shipTons;
+					if (shipTons <= 0) continue;
+					int want = shipTons * s.ItemsPerTon;
 					int took = 0;
 					foreach (var box in factory.factoryStorage.storagePool)
 					{
@@ -429,6 +442,7 @@ namespace LandingRights
 					}
 					int gotTons = took / s.ItemsPerTon;
 					if (gotTons <= 0) continue;
+					if (room >= 0) room -= gotTons;
 					int prev; tons.TryGetValue(s.Commodity, out prev);
 					tons[s.Commodity] = prev + gotTons;
 					detail.Add(took + " " + s.ItemName);
@@ -444,9 +458,14 @@ namespace LandingRights
 			foreach (var p in tons) kv.Add(new KeyValuePair<string, string>("cargo." + p.Key, p.Value.ToString()));
 			Native.AllowSetForegroundWindow(Native.ASFW_ANY);
 			WriteKV(Path.Combine(bridgeDir, "shipment-" + DateTime.UtcNow.Ticks + ".txt"), kv);
+			Log.Write("fleet free space: " + (capacity < 0 ? "unknown" : capacity + " t") + "; left in depot over capacity: " + leftBehindTons + " t");
 			Log.Write("shipped from " + claim.Planet + ": " + (detail.Count > 0 ? string.Join(", ", detail.ToArray()) : "nothing"));
-			if (detail.Count > 0)
+			if (detail.Count > 0 && leftBehindTons > 0)
+				Popup("Cargo lifter away: " + string.Join(", ", detail.ToArray()) + ". Your fleet's hold is full; " + leftBehindTons + (leftBehindTons == 1 ? " ton stays" : " tons stay") + " in the depot. Back to your fleet.");
+			else if (detail.Count > 0)
 				Popup("Cargo lifter away: " + string.Join(", ", detail.ToArray()) + ". Back to your fleet.");
+			else if (leftBehindTons > 0)
+				Popup("Your fleet's hold is full (" + capacity + " tons free). Sell or drop cargo in Endless Sky, then press " + returnKey + " again. Everything stays in the depot. Back to your fleet.");
 			else if (depots == 0)
 				Popup("No spaceport depots on " + (planet != null ? planet.displayName : "this planet") + " yet. Open a Depot and click \"Ship to Endless Sky\" above its window, fill it, then press " + returnKey + ". Back to your fleet.");
 			else if (found.Count == 0)

@@ -47,7 +47,7 @@
       "game": "endless-sky",
       "where": "GameLoop (source/main.cpp)",
       "trigger": "every frame (acts 2x/s while landed)",
-      "does": "notices a claim bought while landed, warns if DSP is not running, loads shipment files into the landed cargo pool, raises ES window on return",
+      "does": "notices a claim bought while landed, warns if DSP is not running, loads shipment files into the landed cargo pool, raises ES window on return; every frame while landed, reports free fleet cargo space and local prices (fleet.txt)",
       "bridgeFile": "shipment"
     },
     {
@@ -71,7 +71,7 @@
       "game": "dyson-sphere-program",
       "where": "LandingRightsPlugin.Update (MonoBehaviour)",
       "trigger": "player presses the return key",
-      "does": "empties shippable items from the claim planet's storage boxes into a shipment, hands focus back to ES",
+      "does": "ships whole tons from spaceport depots, best-paying goods first, never more than the fleet has room for (fleet.txt); leftovers stay; hands focus back to ES",
       "bridgeFile": "shipment"
     },
     {

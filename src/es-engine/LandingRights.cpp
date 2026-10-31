@@ -28,6 +28,7 @@ free software under the GNU General Public License v3 or later; this file is too
 #include <sstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
@@ -172,6 +173,30 @@ namespace {
 #endif
 	}
 
+	string lastFleetReport;
+
+	// Tell DSP how much the landed fleet can still carry, and what each good sells for here.
+	void WriteFleet(PlayerInfo &player)
+	{
+		if(!landedPlanet)
+			return;
+		int free = max(0, player.Cargo().Free());
+		vector<pair<string, string>> kv = {
+			{"planet", landedPlanet->TrueName()},
+			{"cargoFree", to_string(free)},
+		};
+		const System *system = landedPlanet->GetSystem();
+		for(const auto &c : GameData::Commodities())
+			kv.emplace_back("price." + c.name, to_string(system ? system->Trade(c.name) : c.low));
+		string report;
+		for(const auto &it : kv)
+			report += it.first + "=" + it.second + ";";
+		if(report == lastFleetReport)
+			return;
+		lastFleetReport = report;
+		WriteKV(Dir() / "fleet.txt", kv);
+	}
+
 	void Raise()
 	{
 		SDL_Window *window = SDL_GL_GetCurrentWindow();
@@ -264,6 +289,7 @@ void LandingRights::OnLanded(PlayerInfo &player)
 	player.Conditions().Set(ENGINE_CONDITION, 1);
 	landed = true;
 	landedPlanet = player.GetPlanet();
+	lastFleetReport.clear();
 	warnedNoDsp = false;
 	WriteState(player, "landed");
 }
@@ -276,6 +302,8 @@ void LandingRights::OnDeparted(PlayerInfo &player)
 		return;
 	WriteState(player, "departed");
 	player.Conditions().Set(ENGINE_CONDITION, 0);
+	error_code ec;
+	fs::remove(Dir() / "fleet.txt", ec);
 	landed = false;
 	landedPlanet = nullptr;
 }
@@ -310,6 +338,8 @@ void LandingRights::Step(PlayerInfo &player, UI &gamePanels)
 	}
 	if(!landed || !landedPlanet)
 		return;
+	// Cheap and de-duplicated, so every frame: DSP always sees the current free space.
+	WriteFleet(player);
 	if(now < nextPoll)
 		return;
 	nextPoll = now + LandingRightsTables::POLL_SECONDS;

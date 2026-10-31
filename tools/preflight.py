@@ -74,6 +74,10 @@ for r in S["shipments"]["rows"]:
 
 # 3. DSP enum names from the player's Assembly-CSharp (metadata only)
 dump = os.path.join(os.path.dirname(__file__), "dump", "dump.exe")
+if not os.path.exists(dump):  # build the metadata reader on first use (Mono + Mono.Cecil)
+    cecil = "/usr/lib/mono/gac/Mono.Cecil/0.11.0.0__0738eb9f132ed756/Mono.Cecil.dll"
+    subprocess.run(["mcs", "-r:" + cecil, os.path.join(os.path.dirname(dump), "Dump.cs"), "-out:" + dump], check=True, capture_output=True)
+    import shutil; shutil.copy(cecil, os.path.dirname(dump))
 out = subprocess.run(["mono", dump, os.path.join(dsp_managed, "Assembly-CSharp.dll"), "EPlanetType"], capture_output=True, text=True).stdout
 ptypes = set(re.findall(r"F static EPlanetType (\w+)", out))
 for r in S["worlds"]["rows"]:
