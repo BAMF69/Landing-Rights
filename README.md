@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/landing-rights-logo.png" alt="Landing Rights: Endless Sky × Dyson Sphere Program" width="720"></p>
+
 # Landing Rights: Endless Sky × Dyson Sphere Program
 
 You fly, trade and fight in **Endless Sky**. You can buy a land claim on a planet. When you land there, **Dyson Sphere Program** comes to the front, and your mecha is standing on a matching planet in your own DSP galaxy. Build a factory, open a Depot, click **Ship to Endless Sky** above its window to make it a spaceport, fill it with ingots or parts, then press **F8**. Only spaceport depots ship, so everything else stays put. The goods are lifted up to your Endless Sky fleet as cargo you can sell or haul.
@@ -8,6 +10,12 @@ Status: **0.1.0, first playable build.** Played on Windows with both games runni
 
 * Endless Sky 0.11.2 (Steam, free) and Dyson Sphere Program (Steam), both installed.
 * Nothing else to install by hand. Everything the mashup needs is in the release.
+
+## Screenshots
+
+| A spaceport depot on the New Greenland claim (Dyson Sphere Program) | The cargo arriving in your hold (Endless Sky) |
+|---|---|
+| ![Depot window with the Ship to Endless Sky switch](assets/screenshot-dsp-spaceport.jpg) | ![Cargo lifter dialog on New Greenland](assets/screenshot-es-cargo.jpg) |
 
 ## How it plays
 
