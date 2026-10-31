@@ -1,0 +1,80 @@
+# Generated from sheets/*.json by tools/gen.py. Do not edit; change the sheet.
+# Landing Rights: stake a claim on a planet, then build on it in Dyson Sphere Program.
+
+mission "Landing Rights: claim New Boston"
+	landing
+	invisible
+	repeat
+	source "New Boston"
+	to offer
+		has "landing rights: engine"
+		not "landing rights: claim New Boston"
+	on offer
+		conversation
+			`A surveyor in a mud-spattered coat waves a land deed at you. "Marsh plot out past the textile mills. Nobody wants it. Five thousand and it's yours, mineral rights included."`
+			choice
+				`	"I'll take it." (Pay 5,000 credits.)`
+				`	"Maybe another time."`
+					decline
+			branch "can pay"
+				"credits" >= 5000
+			`	You check your account. You don't have enough credits, and the deed goes back into the coat.`
+				decline
+			label "can pay"
+			action
+				payment -5000
+				set "landing rights: claim New Boston"
+			`	The deed is yours: an ocean world plot on New Boston. Your engineering mecha is already heading down to the surface. (Landing Rights: build in Dyson Sphere Program, click "Ship to Endless Sky" on a Depot there, fill it, and press F8 to ship them up to your fleet. Back here, press F at any time to go down to the surface again.)`
+				decline
+
+mission "Landing Rights: claim Gemstone"
+	landing
+	invisible
+	repeat
+	source "Gemstone"
+	to offer
+		has "landing rights: engine"
+		not "landing rights: claim Gemstone"
+	on offer
+		conversation
+			`The mining guild is auctioning off a played-out lava field. The veins near the surface are gone, but the guild clerk swears an automated foundry could still turn a profit.`
+			choice
+				`	"I'll take it." (Pay 40,000 credits.)`
+				`	"Maybe another time."`
+					decline
+			branch "can pay"
+				"credits" >= 40000
+			`	You check your account. You don't have enough credits, and the deed goes back into the coat.`
+				decline
+			label "can pay"
+			action
+				payment -40000
+				set "landing rights: claim Gemstone"
+			`	The deed is yours: a volcanic world plot on Gemstone. Your engineering mecha is already heading down to the surface. (Landing Rights: build in Dyson Sphere Program, click "Ship to Endless Sky" on a Depot there, fill it, and press F8 to ship them up to your fleet. Back here, press F at any time to go down to the surface again.)`
+				decline
+
+mission "Landing Rights: claim New Greenland"
+	landing
+	invisible
+	repeat
+	source "New Greenland"
+	to offer
+		has "landing rights: engine"
+		not "landing rights: claim New Greenland"
+	on offer
+		conversation
+			`A frostbitten homesteader is selling the claim to a glacier valley he never managed to farm. "Cold enough to keep any machine from overheating," he says, a little too eagerly.`
+			choice
+				`	"I'll take it." (Pay 25,000 credits.)`
+				`	"Maybe another time."`
+					decline
+			branch "can pay"
+				"credits" >= 25000
+			`	You check your account. You don't have enough credits, and the deed goes back into the coat.`
+				decline
+			label "can pay"
+			action
+				payment -25000
+				set "landing rights: claim New Greenland"
+			`	The deed is yours: a frozen world plot on New Greenland. Your engineering mecha is already heading down to the surface. (Landing Rights: build in Dyson Sphere Program, click "Ship to Endless Sky" on a Depot there, fill it, and press F8 to ship them up to your fleet. Back here, press F at any time to go down to the surface again.)`
+				decline

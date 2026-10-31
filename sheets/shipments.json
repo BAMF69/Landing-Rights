@@ -1,0 +1,174 @@
+{
+  "sheet": "shipments",
+  "about": "DSP items that a claim's storage boxes ship up to your Endless Sky fleet. dspItemId/dspItemName are checked against the player's DSP LDB.items at runtime (plugin logs a mismatch and skips the row). esCommodity must be a commodity in the player's Endless Sky data/commodities.txt. If the ID doesn't match the English name in the player's game, the plugin looks the item up by name instead.",
+  "columns": [
+    "id",
+    "dspItemId",
+    "dspItemName",
+    "esCommodity",
+    "itemsPerTon"
+  ],
+  "rows": [
+    {
+      "id": "iron-ingot",
+      "dspItemId": 1101,
+      "dspItemName": "Iron Ingot",
+      "esCommodity": "Metal",
+      "itemsPerTon": 20
+    },
+    {
+      "id": "copper-ingot",
+      "dspItemId": 1104,
+      "dspItemName": "Copper Ingot",
+      "esCommodity": "Metal",
+      "itemsPerTon": 20
+    },
+    {
+      "id": "steel",
+      "dspItemId": 1103,
+      "dspItemName": "Steel",
+      "esCommodity": "Heavy Metals",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "silicon",
+      "dspItemId": 1105,
+      "dspItemName": "High-Purity Silicon",
+      "esCommodity": "Electronics",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "gear",
+      "dspItemId": 1201,
+      "dspItemName": "Gear",
+      "esCommodity": "Equipment",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "magnetic-coil",
+      "dspItemId": 1202,
+      "dspItemName": "Magnetic Coil",
+      "esCommodity": "Electronics",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "circuit-board",
+      "dspItemId": 1301,
+      "dspItemName": "Circuit Board",
+      "esCommodity": "Electronics",
+      "itemsPerTon": 5
+    },
+    {
+      "id": "plant-fuel",
+      "dspItemId": 1031,
+      "dspItemName": "Plant Fuel",
+      "esCommodity": "Food",
+      "itemsPerTon": 20
+    },
+    {
+      "id": "organic-crystal",
+      "dspItemId": 1117,
+      "dspItemName": "Organic Crystal",
+      "esCommodity": "Clothing",
+      "itemsPerTon": 5
+    },
+    {
+      "id": "plastic",
+      "dspItemId": 1115,
+      "dspItemName": "Plastic",
+      "esCommodity": "Plastic",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "sulfuric-acid",
+      "dspItemId": 1116,
+      "dspItemName": "Sulfuric Acid",
+      "esCommodity": "Medical",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "stone-brick",
+      "dspItemId": 1108,
+      "dspItemName": "Stone Brick",
+      "esCommodity": "Industrial",
+      "itemsPerTon": 40
+    },
+    {
+      "id": "glass",
+      "dspItemId": 1110,
+      "dspItemName": "Glass",
+      "esCommodity": "Industrial",
+      "itemsPerTon": 20
+    },
+    {
+      "id": "electric-motor",
+      "dspItemId": 1203,
+      "dspItemName": "Electric Motor",
+      "esCommodity": "Industrial",
+      "itemsPerTon": 5
+    },
+    {
+      "id": "titanium-ingot",
+      "dspItemId": 1106,
+      "dspItemName": "Titanium Ingot",
+      "esCommodity": "Heavy Metals",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "titanium-alloy",
+      "dspItemId": 1107,
+      "dspItemName": "Titanium Alloy",
+      "esCommodity": "Heavy Metals",
+      "itemsPerTon": 4
+    },
+    {
+      "id": "microcrystalline",
+      "dspItemId": 1302,
+      "dspItemName": "Microcrystalline Component",
+      "esCommodity": "Electronics",
+      "itemsPerTon": 4
+    },
+    {
+      "id": "processor",
+      "dspItemId": 1303,
+      "dspItemName": "Processor",
+      "esCommodity": "Electronics",
+      "itemsPerTon": 2
+    },
+    {
+      "id": "em-turbine",
+      "dspItemId": 1204,
+      "dspItemName": "Electromagnetic Turbine",
+      "esCommodity": "Equipment",
+      "itemsPerTon": 4
+    },
+    {
+      "id": "thruster",
+      "dspItemId": 1405,
+      "dspItemName": "Thruster",
+      "esCommodity": "Equipment",
+      "itemsPerTon": 2
+    },
+    {
+      "id": "prism",
+      "dspItemId": 1111,
+      "dspItemName": "Prism",
+      "esCommodity": "Luxury Goods",
+      "itemsPerTon": 10
+    },
+    {
+      "id": "diamond",
+      "dspItemId": 1112,
+      "dspItemName": "Diamond",
+      "esCommodity": "Luxury Goods",
+      "itemsPerTon": 5
+    },
+    {
+      "id": "casimir-crystal",
+      "dspItemId": 1126,
+      "dspItemName": "Casimir Crystal",
+      "esCommodity": "Luxury Goods",
+      "itemsPerTon": 2
+    }
+  ]
+}
