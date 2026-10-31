@@ -141,17 +141,19 @@ namespace LandingRights
 			catch (Exception e) { Log.Write("Update: " + e); }
 		}
 
-		// Unity calls this when the DSP window gains or loses focus.
-		void OnApplicationFocus(bool focused)
+		// DSP's own GlobalObject.OnApplicationFocus resets AudioListener.volume to 1 on every focus change
+		// (unless its own "background mute" option is on), so we enforce the mute every frame instead of once.
+		void LateUpdate()
 		{
 			try
 			{
-				if (!focused && muteInBackground && savedVolume < 0f)
+				bool background = !Application.isFocused;
+				if (background && muteInBackground)
 				{
-					savedVolume = AudioListener.volume;
-					AudioListener.volume = 0f;
+					if (savedVolume < 0f) savedVolume = AudioListener.volume > 0f ? AudioListener.volume : 1f;
+					if (AudioListener.volume != 0f) AudioListener.volume = 0f;
 				}
-				else if (focused && savedVolume >= 0f)
+				else if (savedVolume >= 0f)
 				{
 					AudioListener.volume = savedVolume;
 					savedVolume = -1f;
