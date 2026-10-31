@@ -49,7 +49,7 @@ p = os.path.join(root, "src/es-plugin/landing-rights/data")
 os.makedirs(p, exist_ok=True)
 open(os.path.join(p, "landing rights.txt"), "w", encoding="utf-8", newline="\n").write("\n".join(es))
 open(os.path.join(root, "src/es-plugin/landing-rights/plugin.txt"), "w", newline="\n").write(
-    'name "Landing Rights"\nabout "Stake claims on planets and build factories on them in Dyson Sphere Program. Requires the Landing Rights launcher."\nversion "0.1.0"\n')
+    'name "Landing Rights"\nabout "Stake claims on planets and build factories on them in Dyson Sphere Program. Requires the Landing Rights launcher."\nversion "0.1.1"\n')
 
 # ---------- C++ ----------
 h = [f"// {HDR}", "#pragma once", "#include <string>", "", "namespace LandingRightsTables {",

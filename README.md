@@ -4,7 +4,7 @@
 
 You fly, trade and fight in **Endless Sky**. You can buy a land claim on a planet. When you land there, **Dyson Sphere Program** comes to the front, and your mecha is standing on a matching planet in your own DSP galaxy. Build a factory, open a Depot, click **Ship to Endless Sky** above its window to make it a spaceport, fill it with ingots or parts, then press **F8**. Only spaceport depots ship, so everything else stays put. The goods are lifted up to your Endless Sky fleet as cargo you can sell or haul.
 
-Status: **0.1.0, first playable build.** Played on Windows with both games running side by side. Tested so far: buying claims on New Boston and New Greenland, being sent to a matching DSP planet (an ice world for New Greenland), F to go back down, F8 to return, and 20 Iron Ingots from a Depot arriving as 1 ton of Metal in the Endless Sky hold.
+Status: **0.1.1.** Played on Windows with both games running side by side. Tested so far: buying claims on New Boston and New Greenland, being sent to a matching DSP planet (an ice world for New Greenland), F to go back down, F8 to return, and 20 Iron Ingots from a Depot arriving as 1 ton of Metal in the Endless Sky hold.
 
 ## What players need
 
@@ -50,8 +50,8 @@ Nothing from either game is shipped. Each player's own installed copies are used
 
 ## Installing (by hand)
 
-1. Unzip `LandingRights-0.1.0-endless-sky.zip` into your Endless Sky folder (Steam: right-click Endless Sky > Manage > Browse local files).
-2. Unzip `LandingRights-0.1.0-dyson-sphere-program.zip` into your Dyson Sphere Program folder.
+1. Unzip `LandingRights-0.1.1-endless-sky.zip` into your Endless Sky folder (Steam: right-click Endless Sky > Manage > Browse local files).
+2. Unzip `LandingRights-0.1.1-dyson-sphere-program.zip` into your Dyson Sphere Program folder.
 3. Run `Endless Sky Landing Rights.exe` from the Endless Sky folder. It opens Dyson Sphere Program through Steam. Start or load a factory there, then fly.
 
 To uninstall, delete those files. Neither game's own files are changed.

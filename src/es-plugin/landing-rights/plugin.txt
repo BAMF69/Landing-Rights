@@ -1,3 +1,3 @@
 name "Landing Rights"
 about "Stake claims on planets and build factories on them in Dyson Sphere Program. Requires the Landing Rights launcher."
-version "0.1.0"
+version "0.1.1"
