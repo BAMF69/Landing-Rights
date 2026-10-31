@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Landing Rights mark">
+  <defs>
+    <clipPath id="disc"><circle cx="120" cy="120" r="112"/></clipPath>
+  </defs>
+  <!-- night sky disc -->
+  <circle cx="120" cy="120" r="112" fill="#0B1424"/>
+  <g clip-path="url(#disc)">
+    <!-- stars -->
+    <g fill="#CFE9F5">
+      <circle cx="52" cy="58" r="1.6"/><circle cx="178" cy="44" r="1.3"/><circle cx="196" cy="92" r="1.8"/>
+      <circle cx="40" cy="104" r="1.1"/><circle cx="150" cy="30" r="1"/><circle cx="84" cy="34" r="1.2"/>
+      <circle cx="206" cy="128" r="1"/>
+    </g>
+    <!-- orbit ring behind the planet -->
+    <ellipse cx="120" cy="196" rx="150" ry="46" fill="none" stroke="#5FD4F0" stroke-width="3" stroke-opacity="0.55"/>
+    <!-- planet horizon -->
+    <circle cx="120" cy="330" r="168" fill="#14324A"/>
+    <circle cx="120" cy="330" r="168" fill="none" stroke="#5FD4F0" stroke-width="4"/>
+    <!-- surface bands -->
+    <path d="M -10 196 Q 120 176 250 196" fill="none" stroke="#1E4A66" stroke-width="7"/>
+    <path d="M -10 214 Q 120 196 250 214" fill="none" stroke="#1E4A66" stroke-width="5"/>
+    <!-- descent trajectory -->
+    <path d="M 176 34 Q 160 78 132 100" fill="none" stroke="#F2A33A" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"/>
+    <!-- lander chevron -->
+    <path d="M 120 134 L 144 104 L 120 113 L 96 104 Z" fill="#F2A33A"/>
+    <!-- claim stake: pole + hex flag planted on the horizon -->
+    <line x1="150" y1="134" x2="150" y2="166" stroke="#E8F4FA" stroke-width="4" stroke-linecap="round"/>
+    <path d="M 152 134 l 22 0 l 7 8 l -7 8 l -22 0 Z" fill="#5FD4F0"/>
+    <!-- depot block on the surface -->
+    <rect x="70" y="152" width="22" height="14" rx="2" fill="#E8F4FA"/>
+    <rect x="74" y="156" width="14" height="3" fill="#14324A"/>
+  </g>
+  <!-- rim -->
+  <circle cx="120" cy="120" r="112" fill="none" stroke="#5FD4F0" stroke-width="6"/>
+  <circle cx="120" cy="120" r="102" fill="none" stroke="#5FD4F0" stroke-width="1.5" stroke-opacity="0.4"/>
+</svg>
