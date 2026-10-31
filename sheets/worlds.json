@@ -1,0 +1,11 @@
+{
+  "sheet": "worlds",
+  "about": "How an Endless Sky world type maps onto a Dyson Sphere Program planet in the player's own galaxy. dspPlanetType is the EPlanetType enum name in DSP's Assembly-CSharp (verified by metadata dump).",
+  "columns": ["id", "label", "dspPlanetType", "esLandscapeKeywords", "esAttributeKeywords"],
+  "rows": [
+    {"id": "ocean",    "label": "Ocean world",    "dspPlanetType": "Ocean",  "esLandscapeKeywords": ["water", "sea", "beach", "fog", "fields", "forest", "valley", "hills"], "esAttributeKeywords": ["fishing", "farming"]},
+    {"id": "volcanic", "label": "Volcanic world", "dspPlanetType": "Vocano", "esLandscapeKeywords": ["lava", "igna"],                                                    "esAttributeKeywords": ["volcanic"]},
+    {"id": "ice",      "label": "Frozen world",   "dspPlanetType": "Ice",    "esLandscapeKeywords": ["snow", "tundra", "enceladus", "dmottl"],                          "esAttributeKeywords": ["frozen"]},
+    {"id": "desert",   "label": "Desert world",   "dspPlanetType": "Desert", "esLandscapeKeywords": ["desert", "dune", "canyon", "badlands", "mars", "mercury"],       "esAttributeKeywords": ["mining"]}
+  ]
+}

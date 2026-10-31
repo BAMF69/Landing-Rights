@@ -1,0 +1,101 @@
+# Integration test for Landing Rights (GPLv3, like Endless Sky's own tests).
+
+test-data "Landing Rights New Boston Save"
+	category "savegame"
+	contents
+		pilot Lara Landwright
+		date 16 11 3013
+		system Rutilicus
+		planet "New Boston"
+		clearance
+		# Set some reputations to positive to avoid combat
+		"reputation with"
+			Bounty 1
+			"Bounty Hunter" 1
+			Pirate 1
+		# What you own:
+		ship "Star Barge"
+			name "Buggy Barge"
+			sprite "ship/star barge"
+			attributes
+				category "Light Freighter"
+				cost 190000
+				mass 70
+				bunks 3
+				"cargo space" 50
+				drag 2.1
+				"engine capacity" 400
+				"fuel capacity" 300
+				"heat dissipation" 0.8
+				hull 1000
+				"outfit space" 1300
+				"required crew" 1
+				shields 600
+				"turret mounts" 1
+				"weapon capacity" 200
+			outfits
+				"X1700 Ion Thruster"
+				"X1200 Ion Steering"
+				Hyperdrive
+				"Anti-Missile Turret"
+				"D14-RN Shield Generator"
+				"nGVF-BB Fuel Cell"
+				"LP036a Battery Pack"
+			crew 1
+			fuel 300
+			shields 600
+			hull 1000
+			engine -9 38 1
+			engine 9 38 1
+			turret 0 -8 "Anti-Missile Turret"
+			leak leak 60 50
+			explode "tiny explosion" 10
+			explode "small explosion" 10
+			system Rutilicus
+			planet "New Boston"
+		account
+			credits 100000
+			score 400
+			history
+		cargo
+			commodities
+		visited Rutilicus
+		"visited planet" "New Boston"
+		visited "Alpha Centauri"
+		visited "Vega"
+		visited "Menkent"
+
+
+
+test "Landing Rights claim and ship"
+	status active
+	description "Buy the New Boston claim, then receive a shipment from Dyson Sphere Program."
+	sequence
+		inject "Landing Rights New Boston Save"
+		call "Load First Savegame"
+		# A shipment placed in the bridge folder before launch is delivered on landing (load lands you).
+		input
+			key "Return"
+		assert
+			"landing rights: claim New Boston" == 0
+		call "Depart"
+		navigate
+			"travel destination" "New Boston"
+		call "Land"
+		# The claim offer: pick "I'll take it."
+		input
+			key 1
+		input
+			key "Return"
+		assert
+			"landing rights: claim New Boston" == 1
+		# F on the planet screen sends you back down to the claim (re-announces the landing).
+		input
+			key f
+		assert
+			"flagship landed" == 1
+		call "Depart"
+		navigate
+			"travel destination" "New Boston"
+		call "Land"
+		# Landing saves the game; the shipped Metal must be in the hold.

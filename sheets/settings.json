@@ -1,0 +1,78 @@
+{
+  "sheet": "settings",
+  "about": "Tunables. Each row becomes a constant in both generated code files (C++ for ES, C# for DSP) or a BepInEx config entry.",
+  "columns": [
+    "id",
+    "value",
+    "usedBy",
+    "note"
+  ],
+  "rows": [
+    {
+      "id": "bridgeDirName",
+      "value": "landing-rights",
+      "usedBy": [
+        "endless-sky",
+        "dyson-sphere-program"
+      ],
+      "note": "subfolder of the ES config folder"
+    },
+    {
+      "id": "claimConditionPrefix",
+      "value": "landing rights: claim ",
+      "usedBy": [
+        "endless-sky"
+      ],
+      "note": "ES condition set by the claim mission, followed by the planet name"
+    },
+    {
+      "id": "pollSeconds",
+      "value": 0.5,
+      "usedBy": [
+        "endless-sky",
+        "dyson-sphere-program"
+      ],
+      "note": "how often each side checks the bridge folder"
+    },
+    {
+      "id": "heartbeatSeconds",
+      "value": 2.0,
+      "usedBy": [
+        "dyson-sphere-program"
+      ],
+      "note": "DSP heartbeat interval"
+    },
+    {
+      "id": "heartbeatStaleSeconds",
+      "value": 10.0,
+      "usedBy": [
+        "endless-sky"
+      ],
+      "note": "older heartbeat = DSP not running"
+    },
+    {
+      "id": "returnKey",
+      "value": "F8",
+      "usedBy": [
+        "dyson-sphere-program"
+      ],
+      "note": "UnityEngine.KeyCode name; BepInEx config can change it"
+    },
+    {
+      "id": "arrivalAltitude",
+      "value": 40.0,
+      "usedBy": [
+        "dyson-sphere-program"
+      ],
+      "note": "metres above the surface the mecha appears at"
+    },
+    {
+      "id": "muteInBackground",
+      "value": true,
+      "usedBy": [
+        "dyson-sphere-program"
+      ],
+      "note": "silence DSP while its window is not focused, restore volume when it is"
+    }
+  ]
+}

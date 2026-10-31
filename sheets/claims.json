@@ -1,0 +1,37 @@
+{
+  "sheet": "claims",
+  "about": "Endless Sky planets the player can stake a claim on. One row = one ES mission + one DSP binding slot. Planet names must exist in the player's Endless Sky data/map planets.txt.",
+  "columns": ["id", "esPlanet", "esLandscape", "esAttributes", "world", "price", "bindToBirthPlanet", "pitch"],
+  "rows": [
+    {
+      "id": "new-boston",
+      "esPlanet": "New Boston",
+      "esLandscape": "land/water2",
+      "esAttributes": "\"dirt belt\" farming textiles",
+      "world": "ocean",
+      "price": 5000,
+      "bindToBirthPlanet": true,
+      "pitch": "A surveyor in a mud-spattered coat waves a land deed at you. \"Marsh plot out past the textile mills. Nobody wants it. Five thousand and it's yours, mineral rights included.\""
+    },
+    {
+      "id": "gemstone",
+      "esPlanet": "Gemstone",
+      "esLandscape": "land/lava7-sfiera",
+      "esAttributes": "\"dirt belt\" mining",
+      "world": "volcanic",
+      "price": 40000,
+      "bindToBirthPlanet": false,
+      "pitch": "The mining guild is auctioning off a played-out lava field. The veins near the surface are gone, but the guild clerk swears an automated foundry could still turn a profit."
+    },
+    {
+      "id": "new-greenland",
+      "esPlanet": "New Greenland",
+      "esLandscape": "land/snow16",
+      "esAttributes": "\"dirt belt\" forest frozen textiles",
+      "world": "ice",
+      "price": 25000,
+      "bindToBirthPlanet": false,
+      "pitch": "A frostbitten homesteader is selling the claim to a glacier valley he never managed to farm. \"Cold enough to keep any machine from overheating,\" he says, a little too eagerly."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "sheet": "hooks",
+  "about": "Every place the mashup touches either game. ES hooks are small calls added to the Endless Sky 0.11.2 source (GPLv3); DSP hooks are BepInEx/Harmony or MonoBehaviour points.",
+  "columns": [
+    "id",
+    "game",
+    "where",
+    "trigger",
+    "does",
+    "bridgeFile"
+  ],
+  "rows": [
+    {
+      "id": "es-start",
+      "game": "endless-sky",
+      "where": "main (source/main.cpp)",
+      "trigger": "game starts (not in tests or console runs)",
+      "does": "starts Dyson Sphere Program through Steam unless it is already running; never closes anything",
+      "bridgeFile": "heartbeat"
+    },
+    {
+      "id": "es-landed",
+      "game": "endless-sky",
+      "where": "PlayerInfo::Land (source/PlayerInfo.cpp)",
+      "trigger": "player lands on any planet",
+      "does": "writes landed event; if planet is claimed, lets DSP take focus",
+      "bridgeFile": "state"
+    },
+    {
+      "id": "es-departed",
+      "game": "endless-sky",
+      "where": "PlayerInfo::TakeOff (source/PlayerInfo.cpp)",
+      "trigger": "player takes off",
+      "does": "writes departed event",
+      "bridgeFile": "state"
+    },
+    {
+      "id": "es-build-key",
+      "game": "endless-sky",
+      "where": "PlanetPanel::KeyDown (source/PlanetPanel.cpp)",
+      "trigger": "player presses F on the planet screen",
+      "does": "if landed on an owned claim, re-announces the landing so DSP comes back to the front",
+      "bridgeFile": "state"
+    },
+    {
+      "id": "es-poll",
+      "game": "endless-sky",
+      "where": "GameLoop (source/main.cpp)",
+      "trigger": "every frame (acts 2x/s while landed)",
+      "does": "notices a claim bought while landed, warns if DSP is not running, loads shipment files into the landed cargo pool, raises ES window on return",
+      "bridgeFile": "shipment"
+    },
+    {
+      "id": "dsp-poll",
+      "game": "dyson-sphere-program",
+      "where": "LandingRightsPlugin.Update (MonoBehaviour)",
+      "trigger": "every frame (polls 2x/s)",
+      "does": "reads state; on a new claimed landing binds+travels mecha to the bound planet",
+      "bridgeFile": "state"
+    },
+    {
+      "id": "dsp-heartbeat",
+      "game": "dyson-sphere-program",
+      "where": "LandingRightsPlugin.Update (MonoBehaviour)",
+      "trigger": "every 2 s",
+      "does": "writes heartbeat so ES knows whether a DSP game is loaded",
+      "bridgeFile": "heartbeat"
+    },
+    {
+      "id": "dsp-return",
+      "game": "dyson-sphere-program",
+      "where": "LandingRightsPlugin.Update (MonoBehaviour)",
+      "trigger": "player presses the return key",
+      "does": "empties shippable items from the claim planet's storage boxes into a shipment, hands focus back to ES",
+      "bridgeFile": "shipment"
+    },
+    {
+      "id": "dsp-spaceport-toggle",
+      "game": "dyson-sphere-program",
+      "where": "LandingRightsPlugin.OnGUI (IMGUI over UIStorageWindow)",
+      "trigger": "a Depot window is open",
+      "does": "shows a Ship to Endless Sky switch; switched-on depots (saved per galaxy, planet and depot in LandingRights/spaceports.txt) are the only ones F8 ships from",
+      "bridgeFile": "shipment"
+    }
+  ]
+}
